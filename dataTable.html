@@ -1,0 +1,81 @@
+<html ng-app="myApp">
+	<head>
+		<!-- <script src="node_modules/angular/angular.js"></script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="controllers.js"></script>
+		<script src="script.js"></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body ng-controller='HelloController'>
+		<div>
+			<h1 align="center">DataTable</h1>
+			<div class="topContainer">
+				<label>Sort By:</label><select ng-model="propertyName" ng-options="x for x in names"></select><br><br>
+				<label>Change color for cpt value less than</label><input type="number" ng-model="cpt_value"></input>
+			</div>
+			<table>
+				<div class=>
+				<thead class="initial-header">
+					<tr>
+						<td ng-click="sortBy('impressions')" class="element">Impressions</td>
+						<td ng-click="sortBy('reach')" class="element">Reach</td>
+						<td ng-click="sortBy('spend_account')" class="element">Spend Account</td>
+						<td ng-click="sortBy('website_clicks')" class="element">Website Clicks</td>
+						<td ng-click="sortBy('revenue')" class="element">Revenue</td>
+						<td ng-click="sortBy('visits')" class="element">Visits</td>
+						<td ng-click="sortBy('transactions')" class="element">Transactions</td>
+						<td ng-click="sortBy('bounces')" class="element">Bounces</td>
+						<td ng-click="sortBy('lead')" class="element">Lead</td>
+						<td ng-click="sortBy('goal1_completions')" class="element">Goal<br>completions</td>
+						<td ng-click="sortBy('bouncerate')" class="element">Bounce Rate</td>
+						<td ng-click="sortBy('click2visits')" class="element">Click to visits</td>
+						<td ng-click="sortBy('cpt')" class="element">CPT</td>
+						<td ng-click="sortBy('frequency')" class="element">Frequency</td>
+						<td ng-click="sortBy('datetime')" class="element">Date</td>
+					</tr>
+				</thead>
+				</div>
+				<thead class="final-header">
+					<tr>
+						<td ng-click="sortBy('impressions')" class="element">Impressions</td>
+						<td ng-click="sortBy('reach')" class="element">Reach</td>
+						<td ng-click="sortBy('spend_account')" class="element">Spend Account</td>
+						<td ng-click="sortBy('website_clicks')" class="element">Website Clicks</td>
+						<td ng-click="sortBy('revenue')" class="element">Revenue</td>
+						<td ng-click="sortBy('visits')" class="element">Visits</td>
+						<td ng-click="sortBy('transactions')" class="element">Transactions</td>
+						<td ng-click="sortBy('bounces')" class="element">Bounces</td>
+						<td ng-click="sortBy('lead')" class="element">Lead</td>
+						<td ng-click="sortBy('goal1_completions')" class="element">Goal<br>completions</td>
+						<td ng-click="sortBy('bouncerate')" class="element">Bounce Rate</td>
+						<td ng-click="sortBy('click2visits')" class="element">Click to visits</td>
+						<td ng-click="sortBy('cpt')" class="element">CPT</td>
+						<td ng-click="sortBy('frequency')" class="element">Frequency</td>
+						<td ng-click="sortBy('datetime')" class="element">Date</td>
+					</tr>
+				</thead>
+				<div id="fill"></div>
+				<tbody>
+					<tr ng-repeat='x in rawData | orderBy:propertyName:reverse'>
+						<td class="t_element" text-align="center">{{ x.impressions }}</td>
+						<td class="t_element" text-align="center">{{ x.reach }}</td>
+						<td class="t_element" text-align="center">{{ x.spend_account }}</td>
+						<td class="t_element" text-align="center">{{ x.website_clicks }}</td>
+						<td class="t_element" text-align="center">{{ x.revenue | number: 1 }}</td>
+						<td class="t_element" text-align="center">{{ x.visits}}</td>
+						<td class="t_element" text-align="center">{{ x.transactions}}</td>
+						<td class="t_element" text-align="center">{{ x.bounces}}</td>
+						<td class="t_element" text-align="center">{{ x.lead}}</td>
+						<td class="t_element" text-align="center">{{ x.goal1_completions}}</td>
+						<td class="t_element" text-align="center">{{ x.bouncerate}}</td>
+						<td class="t_element" text-align="center">{{ x.click2visits}}</td>
+						<td ng-class="{greeny:x.cpt <= cpt_value}" text-align="center">{{ x.cpt}}</td>
+						<td class="t_element" text-align="center">{{ x.frequency}}</td>
+						<td class="t_element" text-align="center">{{ x.datetime | date:" d MMM"}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
